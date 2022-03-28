@@ -2,13 +2,15 @@
 
 #include "convert.hpp"
 #include "vector"
+#include "string"
 
 
-class readFile{
+class ReadFile{
 
-readFile();
+public:
+ReadFile();
 
-std::vector<gps_coordinates> read();
+std::vector<gps_coordinates> read(std::string file_name);
 
 
 };
