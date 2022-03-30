@@ -1,11 +1,11 @@
-#include "include/convert.hpp"
+#include "../include/convert.hpp"
 #include <vector>
 #include <cmath>
 
-void GPS_to_waypoint::convert_gps_to_waypoint(std::vector<GPS_coordinates> gps_coordinates_list) {
+void Convert::convert_gps_to_waypoint(std::vector<GPS_coordinates> gps_coordinates_list) {
     Waypoint temp_waypoint;
 
-    if (!gps_coordinates.empty()) {
+    if (!gps_coordinates_list.empty()) {
         for (auto temp_gps: gps_coordinates_list) {
             if (waypoints.empty()) {
                 origin_x_ = temp_gps.latitude;
@@ -23,20 +23,30 @@ void GPS_to_waypoint::convert_gps_to_waypoint(std::vector<GPS_coordinates> gps_c
                 waypoints.push_back(temp_waypoint);
             }
         }
-    }  
+    }
+
+    /*
+    CONVERT CARTESIAN TO SPHERICAL COORDINATE
+    Cartesian (x, y, z)
+    Spherical (r, theta, phi)
+
+    r = sqrt((x * x) + (y * y) + (z * z))
+    theta = arctan(y / x)
+    phi = arctan(sqrt((x * x) + (y * y)) / z)
+    */ 
 }
 
-std::vector<Waypoint> GPS_to_waypoint::get_waypoints() {
+std::vector<Waypoint> Convert::get_waypoints() {
     return waypoints;
 }
-double GPS_to_waypoint::get_x(double gps_x) {
+double Convert::get_x(double gps_x) {
     return gps_x - origin_x_;
 }
 
-double GPS_to_waypoint::get_y(double gps_y) {
+double Convert::get_y(double gps_y) {
     return gps_y - origin_y_;
 }
 
-double GPS_to_waypoint::get_yaw(double angle) {
+double Convert::get_yaw(double angle) {
     return angle * M_PI / 180;
 }
