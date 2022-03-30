@@ -7,76 +7,81 @@
 #include <string>
 #include <sstream>
 
-#include "/home/hetricke/Documents/ISC/GPS to Waypoint/gps_to_waypoint/include/readFile.hpp"
-
+#include "../include/readFile.hpp"
 
     
     ReadFile::ReadFile(){
     }
 
-   std::vector<gps_coordinates> ReadFile::read(std::string file_path){
+    //Reads a file containing waypoints
+    //Returns an empty list if file not found and prints an error
+   std::vector<GPS_coordinates> ReadFile::read(std::string file_path){
+
 
         int state = 0;
-        std::vector<gps_coordinates> results;
+        std::vector<GPS_coordinates> results;
 
+        //used to process the file line by line
         std::ifstream WaypointsList(file_path);
         std::string wp;
 
+        //used to split the gps coordinates into different components
         std::vector<std::string> tok;
         std::stringstream split(wp);
         std::string token;
 
+        //Runs if the file is found
         if(WaypointsList){
 
-        while(getline(WaypointsList, wp)){
+            //runs until it reaches the end of file
+            while(getline(WaypointsList, wp)){
 
-            if(wp.find("[") != std::string::npos){
-                
-                if (wp.find("start")!= std::string::npos){
+                //changes to different states based on tag
+                if(wp.find("[") != std::string::npos){
+                    
+                    if (wp.find("start")!= std::string::npos){
 
-                    state = 1;
+                        state = 1;
+                    }
+
+                    else if (wp.find("points")!= std::string::npos){
+
+                        state = 0;
+                    }
+
+                    continue;
+
                 }
 
-                else if (wp.find("points")!= std::string::npos){
 
-                    state = 0;
+                //splits line into long, lat, and orientation
+                while(getline(split, token, ','))
+                {
+                    tok.push_back(token);
                 }
 
-                continue;
+                GPS_coordinates new_gps_point;
+                new_gps_point.longitude = stod(tok[0]);
+                new_gps_point.latitude = stod(tok[1]);
+                new_gps_point.orientation = stod(tok[2]);
+        
+
+                //adds gps point to vector based on state                
+                if (state == 0){
+                    results.push_back(new_gps_point);
+
+                }
+
+                else if (state == 1){
+                    results.insert(results.begin(), new_gps_point);
+
+                }
+
 
             }
 
-
-     
-             while(getline(split, token, ','))
-            {
-                tok.push_back(token);
-            }
-
-            gps_coordinates new_gps_point;
-
-            char *t;
-            new_gps_point.longitude = stod(tok[0]);
-            new_gps_point.latitude = stod(tok[1]);
-            new_gps_point.orientation = stod(tok[2]);
-     
-
-            
-            if (state == 0){
-                results.push_back(new_gps_point);
-
-            }
-
-            else if (state == 1){
-                results.insert(results.begin(), new_gps_point);
-
-            }
-
-
-        }
-
-
-        WaypointsList.close();
+ 
+            WaypointsList.close();
 
         }
 

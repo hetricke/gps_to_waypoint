@@ -11,7 +11,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(fmt)
 
-add_executable(gps_to_waypoint main.cpp)
+add_executable(gps_to_waypoint src/main.cpp)
 
 target_include_directories(
         gps_to_waypoint

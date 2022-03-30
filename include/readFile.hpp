@@ -10,7 +10,7 @@ class ReadFile{
 public:
 ReadFile();
 
-std::vector<gps_coordinates> read(std::string file_name);
+std::vector<GPS_coordinates> read(std::string file_name);
 
 
 };
