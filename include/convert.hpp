@@ -20,7 +20,7 @@ struct GPS_coordinates{
 
 };
 
-class GPS_to_waypoint {
+class Convert {
 public:
     void convert_gps_to_waypoint(std::vector<GPS_coordinates>);
     std::vector<Waypoint> get_waypoints();
