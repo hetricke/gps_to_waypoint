@@ -12,7 +12,7 @@ struct Waypoint{
     double tolerance;
 };
 
-struct GPS_coordinates{
+struct GPSCoordinates{
 
     double latitude;
     double longitude;
@@ -22,7 +22,7 @@ struct GPS_coordinates{
 
 class Convert {
 public:
-    static Convert convert_gps_to_waypoint(std::vector<GPS_coordinates>);
+    static Convert convert_gps_to_waypoint(std::vector<GPSCoordinates>);
     std::vector<Waypoint> get_waypoints();
     double get_x(double);
     double get_y(double);

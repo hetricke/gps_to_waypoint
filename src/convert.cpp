@@ -2,7 +2,7 @@
 #include <vector>
 #include <cmath>
 
-Convert Convert::convert_gps_to_waypoint(std::vector<GPS_coordinates> gps_coordinates_list) {
+Convert Convert::convert_gps_to_waypoint(std::vector<GPSCoordinates> gps_coordinates_list) {
     Convert obj;
 
     Waypoint temp_waypoint;
@@ -11,18 +11,18 @@ Convert Convert::convert_gps_to_waypoint(std::vector<GPS_coordinates> gps_coordi
         for (auto temp_gps: gps_coordinates_list) {
             if (obj.waypoints.empty()) {
                 obj.origin_x_ = temp_gps.latitude;
-                origin_y_ = temp_gps.longitude;
-                yaw_ = get_yaw(temp_gps.orientation);
-                temp_waypoint = {0, 0, z_, roll_, pitch_, yaw_, tolerance_};
-                waypoints.push_back(temp_waypoint);
+                obj.origin_y_ = temp_gps.longitude;
+                obj.yaw_ = obj.get_yaw(temp_gps.orientation);
+                temp_waypoint = {0, 0, obj.z_, obj.roll_, obj.pitch_, obj.yaw_, obj.tolerance_};
+                obj.waypoints.push_back(temp_waypoint);
             }
             else {
-                x_ = get_x(temp_gps.latitude);
-                y_ = get_y(temp_gps.longitude);
-                yaw_ = get_yaw(temp_gps.orientation);
+                obj.x_ = obj.get_x(temp_gps.latitude);
+                obj.y_ = obj.get_y(temp_gps.longitude);
+                obj.yaw_ = obj.get_yaw(temp_gps.orientation);
 
-                temp_waypoint = {x_, y_, z_, roll_, pitch_, yaw_, tolerance_};
-                waypoints.push_back(temp_waypoint);
+                temp_waypoint = {obj.x_, obj.y_, obj.z_, obj.roll_, obj.pitch_, obj.yaw_, obj.tolerance_};
+                obj.waypoints.push_back(temp_waypoint);
             }
         }
     }
