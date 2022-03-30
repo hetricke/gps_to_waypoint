@@ -22,13 +22,16 @@ struct GPS_coordinates{
 
 class Convert {
 public:
-    void convert_gps_to_waypoint(std::vector<GPS_coordinates>);
+    static Convert convert_gps_to_waypoint(std::vector<GPS_coordinates>);
     std::vector<Waypoint> get_waypoints();
     double get_x(double);
     double get_y(double);
     double get_yaw(double);
 
 private:
+
+    Convert() = default;
+
     double origin_x_, x_;
     double origin_y_, y_;
     double yaw_;

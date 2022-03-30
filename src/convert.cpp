@@ -2,13 +2,15 @@
 #include <vector>
 #include <cmath>
 
-void Convert::convert_gps_to_waypoint(std::vector<GPS_coordinates> gps_coordinates_list) {
+Convert Convert::convert_gps_to_waypoint(std::vector<GPS_coordinates> gps_coordinates_list) {
+    Convert obj;
+
     Waypoint temp_waypoint;
 
     if (!gps_coordinates_list.empty()) {
         for (auto temp_gps: gps_coordinates_list) {
-            if (waypoints.empty()) {
-                origin_x_ = temp_gps.latitude;
+            if (obj.waypoints.empty()) {
+                obj.origin_x_ = temp_gps.latitude;
                 origin_y_ = temp_gps.longitude;
                 yaw_ = get_yaw(temp_gps.orientation);
                 temp_waypoint = {0, 0, z_, roll_, pitch_, yaw_, tolerance_};
@@ -34,6 +36,8 @@ void Convert::convert_gps_to_waypoint(std::vector<GPS_coordinates> gps_coordinat
     theta = arctan(y / x)
     phi = arctan(sqrt((x * x) + (y * y)) / z)
     */ 
+
+    return obj;
 }
 
 std::vector<Waypoint> Convert::get_waypoints() {
