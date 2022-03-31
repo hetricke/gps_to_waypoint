@@ -1,4 +1,4 @@
-#pragma once
+//#pragma once
 
 
 #include <vector>
@@ -12,7 +12,7 @@
 
     //Reads a file containing waypoints
     //Returns an empty list if file not found and prints an error
-   std::vector<GPSCoordinates> ReadFile::read(std::string file_path){
+    std::vector<GPSCoordinates> read(std::string file_path){
 
 
         int state = 0;
@@ -91,4 +91,4 @@
 
     return results;
 
-    }
+    };
