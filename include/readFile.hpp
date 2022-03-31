@@ -8,9 +8,9 @@
 class ReadFile{
 
 public:
-ReadFile();
+ReadFile() = delete;
 
-std::vector<GPS_coordinates> read(std::string file_name);
+static std::vector<GPSCoordinates> read(std::string file_name);
 
 
 };

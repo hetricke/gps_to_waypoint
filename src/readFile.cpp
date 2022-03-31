@@ -9,17 +9,14 @@
 
 #include "../include/readFile.hpp"
 
-    
-    ReadFile::ReadFile(){
-    }
 
     //Reads a file containing waypoints
     //Returns an empty list if file not found and prints an error
-   std::vector<GPS_coordinates> ReadFile::read(std::string file_path){
+   std::vector<GPSCoordinates> ReadFile::read(std::string file_path){
 
 
         int state = 0;
-        std::vector<GPS_coordinates> results;
+        std::vector<GPSCoordinates> results;
 
         //used to process the file line by line
         std::ifstream WaypointsList(file_path);
@@ -60,7 +57,7 @@
                     tok.push_back(token);
                 }
 
-                GPS_coordinates new_gps_point;
+                GPSCoordinates new_gps_point;
                 new_gps_point.longitude = stod(tok[0]);
                 new_gps_point.latitude = stod(tok[1]);
                 new_gps_point.orientation = stod(tok[2]);
