@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
         std::vector<GPSCoordinates> result = ReadFile::read(fn);
     }
 
-    auto converted = Convert::convert_gps_to_waypoint(result);
+    auto converted = converter::convert_gps_to_waypoint(result);
 
     return 0;
 }
