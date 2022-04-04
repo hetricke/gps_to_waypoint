@@ -8,7 +8,7 @@
 #include <sstream>
 namespace ReadFile {
 
-std::vector<GPSCoordinates> read(std::string file_path){
+inline std::vector<GPSCoordinates> read(std::string file_path){
 
   int state = 0;
   std::vector<GPSCoordinates> results;
