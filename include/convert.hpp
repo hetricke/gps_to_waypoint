@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 #pragma once
+=======
+>>>>>>> neatened code
 
 #include <vector>
 #include <cmath>
