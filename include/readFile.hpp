@@ -5,12 +5,8 @@
 #include "string"
 
 
-class ReadFile{
+namespace ReadFile{
 
-public:
-ReadFile() = delete;
-
-static std::vector<GPSCoordinates> read(std::string file_name);
-
+  std::vector<GPSCoordinates> read(std::string file_path);
 
 };

@@ -2,6 +2,11 @@
 #include <vector>
 #include <numbers>
 
+/**
+ * @brief convert a list of gps coordinates to a list of waypoints
+ * @param gps_coordinates_list 
+ * @return Convert 
+ */
 Convert Convert::convert_gps_to_waypoint(const std::vector<GPSCoordinates>& gps_coordinates_list) {
     Convert converter;
 
@@ -42,17 +47,37 @@ Convert Convert::convert_gps_to_waypoint(const std::vector<GPSCoordinates>& gps_
     return converter;
 }
 
+/**
+ * @brief return a list of converted waypoints
+ * @return std::vector<Waypoint> 
+ */
 std::vector<Waypoint> Convert::get_waypoints() {
     return waypoints;
 }
+
+/**
+ * @brief convert the x of gps coordinate to x of waypoint
+ * @param gps_x
+ * @return double 
+ */
 double Convert::get_x(double gps_x) {
     return gps_x - origin_x_;
 }
 
+/**
+ * @brief convert the y of gps coordinate to y of waypoint
+ * @param gps_y 
+ * @return double 
+ */
 double Convert::get_y(double gps_y) {
     return gps_y - origin_y_;
 }
 
+/**
+ * @brief convert the angle of gps coordinate (degree) to yaw (radian)
+ * @param angle 
+ * @return double 
+ */
 double Convert::get_yaw(double angle) {
     return angle * std::numbers::pi / 180;
 }
