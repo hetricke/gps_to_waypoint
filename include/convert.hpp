@@ -23,7 +23,6 @@ struct GPSCoordinates {
 
 };
 
-
 namespace converter {
     double get_x(double gps_x, double origin_x) {
         return gps_x - origin_x;
@@ -57,6 +56,7 @@ namespace converter {
                     origin_x = temp_gps.latitude;
                     origin_y = temp_gps.longitude;
                     yaw = get_yaw(temp_gps.orientation);
+                    
                     temp_waypoint = {0, 0, z, roll, pitch, yaw, tolerance};
                     waypoints.push_back(temp_waypoint);
                 }
