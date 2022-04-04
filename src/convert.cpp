@@ -1,6 +1,6 @@
 #include "../include/convert.hpp"
 #include <vector>
-#include <numbers>
+#include "math.h"
 
 /**
  * @brief convert a list of gps coordinates to a list of waypoints
@@ -79,5 +79,5 @@ double Convert::get_y(double gps_y) {
  * @return double 
  */
 double Convert::get_yaw(double angle) {
-    return angle * std::numbers::pi / 180;
+    return angle * M_PI / 180;
 }
