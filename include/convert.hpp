@@ -27,6 +27,7 @@ namespace converter {
     double get_x(double gps_x, double origin_x) {
         return gps_x - origin_x;
     }
+    
     double get_y(double gps_y, double origin_y) {
         return gps_y - origin_y;
     }
@@ -56,7 +57,7 @@ namespace converter {
                     origin_x = temp_gps.latitude;
                     origin_y = temp_gps.longitude;
                     yaw = get_yaw(temp_gps.orientation);
-                    
+
                     temp_waypoint = {0, 0, z, roll, pitch, yaw, tolerance};
                     waypoints.push_back(temp_waypoint);
                 }
