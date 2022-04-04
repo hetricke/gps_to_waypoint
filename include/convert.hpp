@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include <numbers>
+#include <cmath>
 
 struct Waypoint {
     double x;
@@ -27,13 +27,13 @@ namespace converter {
     double get_x(double gps_x, double origin_x) {
         return gps_x - origin_x;
     }
-    
+
     double get_y(double gps_y, double origin_y) {
         return gps_y - origin_y;
     }
 
     double get_yaw(double angle) {
-        return angle * std::numbers::pi / 180;
+        return angle * M_PI / 180;
     }
 
     std::vector<Waypoint> convert_gps_to_waypoint(std::vector<GPSCoordinates>& gps_coordinates_list) {
