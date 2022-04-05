@@ -32,6 +32,7 @@ namespace converter {
         return gps_y - origin_y;
     }
 
+    // convert degree to radian
     double get_yaw(double angle) {
         return angle * M_PI / 180;
     }
