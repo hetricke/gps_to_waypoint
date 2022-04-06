@@ -37,7 +37,7 @@ namespace converter {
     }
 
     inline std::vector<Waypoint> convert_gps_to_waypoint(std::vector<GPSCoordinates>& gps_coordinates_list) {
-        Waypoint temp_waypoint;
+        Waypoint temp_waypoint{};
         std::vector<Waypoint> waypoints;
 
         double origin_x{}, x{};
