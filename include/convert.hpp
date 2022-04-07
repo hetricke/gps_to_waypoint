@@ -24,11 +24,11 @@ struct GPSCoordinates {
 };
 
 namespace converter {
-    double get_x(double gps_x, double origin_x) {
+    inline double get_x(double gps_x, double origin_x) {
         return gps_x - origin_x;
     }
 
-    double get_y(double gps_y, double origin_y) {
+    inline double get_y(double gps_y, double origin_y) {
         return gps_y - origin_y;
     }
 
@@ -37,8 +37,8 @@ namespace converter {
         return angle * M_PI / 180;
     }
 
-    std::vector<Waypoint> convert_gps_to_waypoint(std::vector<GPSCoordinates>& gps_coordinates_list) {
-        Waypoint temp_waypoint;
+    inline std::vector<Waypoint> convert_gps_to_waypoint(std::vector<GPSCoordinates>& gps_coordinates_list) {
+        Waypoint temp_waypoint{};
         std::vector<Waypoint> waypoints;
 
         double origin_x{}, x{};

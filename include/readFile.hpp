@@ -7,6 +7,6 @@
 
 namespace ReadFile{
 
-  std::vector<GPSCoordinates> read(std::string file_path);
+  std::vector<GPSCoordinates> read(const std::string& file_path);
 
 };
