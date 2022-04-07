@@ -33,7 +33,7 @@ namespace converter {
     }
 
     // convert degree to radian
-    double get_yaw(double angle) {
+    inline double get_yaw(double angle) {
         return angle * M_PI / 180;
     }
 
