@@ -9,6 +9,14 @@
 
 namespace ReadFile {
 
+    struct FileNotFoundException : public std::exception
+    {
+        const char * what () const throw ()
+        {
+            return "Given file could not be located.";
+        }
+    };
+
     inline std::vector<GPSCoordinates> read(std::string &file_path) {
 
         int state = 0;
@@ -20,8 +28,7 @@ namespace ReadFile {
 
 
         if (WaypointsList.fail()) {
-            std::cout << "File not found" << std::endl;
-            return {};
+            throw FileNotFoundException();
         }
 
             // Runs if the file is found
