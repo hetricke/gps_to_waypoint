@@ -24,7 +24,6 @@ using namespace WriteFile {
             }
         } 
         else {
-
             std::cout<<"File could not open"<<std::endl;
             return;
         } 
