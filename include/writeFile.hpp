@@ -5,14 +5,14 @@
 #include <fstream>
 #include <iostream>
 
-using namespace WriteFile {
+ namespace WriteFile {
     void write(const std::string& file_path){
         std::ofstream file("waypoints.csv");
 
         if (file.is_open()){
     
             std::vector<Waypoint> pile;
-            pile = convert_gps_to_waypoint(ReadFile::read(filepath)));
+            pile = convert_gps_to_waypoint(ReadFile::read(filepath));
 
             file<< "X,Y,Z,Roll,Pitch,Yaw,Tolerance\n";
 
